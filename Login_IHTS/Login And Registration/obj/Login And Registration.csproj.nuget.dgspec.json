@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\New folder\\Login_IHTS\\Login And Registration\\Login And Registration.csproj": {}
+    "D:\\Wep_Api_Practices\\Login_IHTS\\Login And Registration\\Login And Registration.csproj": {}
   },
   "projects": {
-    "D:\\New folder\\Login_IHTS\\Login And Registration\\Login And Registration.csproj": {
+    "D:\\Wep_Api_Practices\\Login_IHTS\\Login And Registration\\Login And Registration.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\New folder\\Login_IHTS\\Login And Registration\\Login And Registration.csproj",
+        "projectUniqueName": "D:\\Wep_Api_Practices\\Login_IHTS\\Login And Registration\\Login And Registration.csproj",
         "projectName": "Login And Registration",
-        "projectPath": "D:\\New folder\\Login_IHTS\\Login And Registration\\Login And Registration.csproj",
+        "projectPath": "D:\\Wep_Api_Practices\\Login_IHTS\\Login And Registration\\Login And Registration.csproj",
         "packagesPath": "C:\\Users\\Abylle\\.nuget\\packages\\",
-        "outputPath": "D:\\New folder\\Login_IHTS\\Login And Registration\\obj\\",
+        "outputPath": "D:\\Wep_Api_Practices\\Login_IHTS\\Login And Registration\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -32,8 +32,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\New folder\\Login_IHTS\\Login_IHTS\\Login_IHTS.csproj": {
-                "projectPath": "D:\\New folder\\Login_IHTS\\Login_IHTS\\Login_IHTS.csproj"
+              "D:\\Wep_Api_Practices\\Login_IHTS\\Login_IHTS\\API_TimeTracker.csproj": {
+                "projectPath": "D:\\Wep_Api_Practices\\Login_IHTS\\Login_IHTS\\API_TimeTracker.csproj"
               }
             }
           }
@@ -80,14 +80,14 @@
         }
       }
     },
-    "D:\\New folder\\Login_IHTS\\Login_IHTS\\Login_IHTS.csproj": {
+    "D:\\Wep_Api_Practices\\Login_IHTS\\Login_IHTS\\API_TimeTracker.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\New folder\\Login_IHTS\\Login_IHTS\\Login_IHTS.csproj",
-        "projectName": "Login_IHTS",
-        "projectPath": "D:\\New folder\\Login_IHTS\\Login_IHTS\\Login_IHTS.csproj",
+        "projectUniqueName": "D:\\Wep_Api_Practices\\Login_IHTS\\Login_IHTS\\API_TimeTracker.csproj",
+        "projectName": "API_TimeTracker",
+        "projectPath": "D:\\Wep_Api_Practices\\Login_IHTS\\Login_IHTS\\API_TimeTracker.csproj",
         "packagesPath": "C:\\Users\\Abylle\\.nuget\\packages\\",
-        "outputPath": "D:\\New folder\\Login_IHTS\\Login_IHTS\\obj\\",
+        "outputPath": "D:\\Wep_Api_Practices\\Login_IHTS\\Login_IHTS\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

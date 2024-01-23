@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace Login_IHTS.Models
+namespace API_TimeTracker.Models
 {
     public class User
     {

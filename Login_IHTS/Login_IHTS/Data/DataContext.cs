@@ -1,7 +1,7 @@
-﻿using Login_IHTS.Models;
+﻿using API_TimeTracker.Models;
 using System.Collections.Generic;
 
-namespace Login_IHTS.Data
+namespace API_TimeTracker.Data
 {
     public class DataContext : DbContext
     {
@@ -19,18 +19,10 @@ namespace Login_IHTS.Data
         }
 
         public DbSet<User> Users => Set<User>();
-
-
-
-
         public DbSet<ProjectModel> Projects { get; set; }
         public DbSet<LocationModel> Locations { get; set; }
         public DbSet<TimePeriodModel> TimePeriods { get; set; }
         public DbSet<TaskModel> Tasks { get; set; }
-
-
-
-
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -39,8 +31,6 @@ namespace Login_IHTS.Data
             modelBuilder.Entity<LocationModel>().HasKey(l => l.LocationId);
             modelBuilder.Entity<TimePeriodModel>().HasKey(tp => tp.TimePeriodId);
             modelBuilder.Entity<TaskModel>().HasKey(t => t.TaskId);
-
-            // Configure relationships and other constraints
         }
 
     }

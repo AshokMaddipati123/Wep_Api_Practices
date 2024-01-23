@@ -1,4 +1,4 @@
-﻿namespace Login_And_Registration.Models
+﻿namespace MVC_TimeTracker.Models
 {
     public class UserViewModel
     {

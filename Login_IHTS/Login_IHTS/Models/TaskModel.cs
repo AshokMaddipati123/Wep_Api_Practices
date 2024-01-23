@@ -1,4 +1,4 @@
-﻿namespace Login_IHTS.Models
+﻿namespace API_TimeTracker.Models
 {
     public class TaskModel
     {
@@ -9,6 +9,10 @@
         public int TimePeriodId { get; set; }
         public DateTime TaskDate { get; set; }
         public int LocationId { get; set; }
+
+
+
+
     }
 
 }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\New folder\\Login_IHTS\\Login_IHTS\\Login_IHTS.csproj": {}
+    "D:\\Wep_Api_Practices\\Login_IHTS\\Login_IHTS\\Login_IHTS.csproj": {}
   },
   "projects": {
-    "D:\\New folder\\Login_IHTS\\Login_IHTS\\Login_IHTS.csproj": {
+    "D:\\Wep_Api_Practices\\Login_IHTS\\Login_IHTS\\Login_IHTS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\New folder\\Login_IHTS\\Login_IHTS\\Login_IHTS.csproj",
+        "projectUniqueName": "D:\\Wep_Api_Practices\\Login_IHTS\\Login_IHTS\\Login_IHTS.csproj",
         "projectName": "Login_IHTS",
-        "projectPath": "D:\\New folder\\Login_IHTS\\Login_IHTS\\Login_IHTS.csproj",
+        "projectPath": "D:\\Wep_Api_Practices\\Login_IHTS\\Login_IHTS\\Login_IHTS.csproj",
         "packagesPath": "C:\\Users\\Abylle\\.nuget\\packages\\",
-        "outputPath": "D:\\New folder\\Login_IHTS\\Login_IHTS\\obj\\",
+        "outputPath": "D:\\Wep_Api_Practices\\Login_IHTS\\Login_IHTS\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

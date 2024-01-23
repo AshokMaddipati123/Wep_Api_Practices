@@ -1,8 +1,8 @@
 {
   "Version": 1,
-  "Hash": "NZFmFzQYfJ8GhLG/kbx84DQqMNIe8Dt5+sr9hJ3NSGQ=",
-  "Source": "Login_IHTS",
-  "BasePath": "_content/Login_IHTS",
+  "Hash": "p0DnXE2wa67ZqzQmQ34c0VMnXyjlEyIWjXQ+/VV28pI=",
+  "Source": "API_TimeTracker",
+  "BasePath": "_content/API_TimeTracker",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],

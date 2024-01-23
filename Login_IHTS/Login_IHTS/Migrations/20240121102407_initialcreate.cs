@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Login_IHTS.Migrations
+namespace API_TimeTracker.Migrations
 {
     /// <inheritdoc />
     public partial class initialcreate : Migration

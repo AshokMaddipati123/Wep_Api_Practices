@@ -1,9 +1,9 @@
 
 global using Microsoft.EntityFrameworkCore;
 
-global using Login_IHTS.Models;
+global using API_TimeTracker.Models;
 
-global using Login_IHTS.Data;
+global using API_TimeTracker.Data;
 
 
 
