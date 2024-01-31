@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using API_TimeTracker.Utilities;
+using Microsoft.AspNetCore.Mvc;
 using System.Security.Cryptography;
+using System.Text;
 
 namespace API_TimeTracker.Controllers
 {
@@ -16,46 +18,27 @@ namespace API_TimeTracker.Controllers
         [HttpPost("Register")]
         public async Task<IActionResult> Register(UserRegisterRequest request)
         {
-            if (_context.Users.Any(u => u.Email == request.Email))
+            if (_context.USERDETAILS.Any(u => u.Email == request.Email))
             {
                 return BadRequest("User already exists.");
             }
-            CreatePasswordHash(request.Password,
-                out byte[] passwordHash,
-                out byte[] passwordSalt);
+
+           
+            var encryptedPassword = PasswordUtility.HashPassword(request.Password);
+
             var user = new User
             {
                 UserName = request.UserName,
                 Email = request.Email,
-                PasswordHash = passwordHash,
-                PasswordSalt = passwordSalt,
-                VerificationToken = CreateRandomToken()
+                Password = encryptedPassword,
+                
             };
 
-            _context.Users.Add(user);
+            _context.USERDETAILS.Add(user);
             await _context.SaveChangesAsync();
 
-            return Ok("User succesfully Created!");
+            return Ok("User successfully Created!");
         }
 
-        private string CreateRandomToken()
-        {
-            return Convert.ToHexString(RandomNumberGenerator.GetBytes(64));
-        }
-
-        private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
-
-        {
-            using (var hmac = new HMACSHA512())
-
-            {
-                passwordSalt = hmac.Key;
-
-                passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
-            }
-
-        }
-
-       
-    }   
+    }
 }

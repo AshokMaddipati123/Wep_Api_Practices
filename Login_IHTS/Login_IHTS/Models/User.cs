@@ -1,28 +1,31 @@
-﻿using System.Runtime.InteropServices;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Runtime.InteropServices;
 
 namespace API_TimeTracker.Models
 {
     public class User
     {
-       
-        public int Id { get; set; }
+        [Column("USERID")]
+        public int UserId { get; set; }
+
+        [Column("USERNAME")]
         public string UserName { get; set; }
 
+        [Column("EMAIL")]
         public string Email { get; set; } = string.Empty;
 
-        public byte[] PasswordHash { get; set; } = new byte[32];
+        [Column("PASSWORD")]
+        public string Password { get; set; } = string.Empty;
 
-        public byte[] PasswordSalt { get; set; } = new byte[32];
 
-        public string? VerificationToken { get; set; }
+        [Column("PERMISSION")]
+        public byte permission { get; set; }
 
-        public DateTime? VerifiedAt { get; set; }
 
-        public string? PasswordResetToken { get; set; }
 
-        public DateTime? ResetTokenExpires { get; set; }
 
 
 
     }
+
 }

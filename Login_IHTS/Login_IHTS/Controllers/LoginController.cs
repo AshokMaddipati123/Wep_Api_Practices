@@ -1,6 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using API_TimeTracker.Utilities;
+using Azure;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography;
+using System.Text;
 
 namespace API_TimeTracker.Controllers
 {
@@ -15,66 +18,76 @@ namespace API_TimeTracker.Controllers
 
         private DataContext _context;
 
+        private string StoredUsername { get; set; }
+
         public LoginController(DataContext context)
         {
            _context = context;
         }
+        //[HttpPost("login")]
+        //public async Task<IActionResult> Login(UserLoginRequest request)
+        //{
+        //    var user = await _context.USERDETAILS.FirstOrDefaultAsync(u => u.UserName == request.UserName || u.Email == request.UserName);
+
+        //    if (user == null)
+        //    {
+        //        return BadRequest("User not found.");
+        //    }
+
+
+        //    if (!PasswordUtility.VerifyPassword(request.Password, user.Password))
+        //    {
+        //        return BadRequest("Incorrect username or password.");
+        //    }
+
+
+
+        //    return Ok($"Welcome Back, {user.Email}!");
+        //}
+
+
+        // ... existing code
+
+
+
+
 
         [HttpPost("login")]
         public async Task<IActionResult> Login(UserLoginRequest request)
         {
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.UserName == request.UserName || u.Email == request.UserName);
+            var user = await _context.USERDETAILS.FirstOrDefaultAsync(u => u.UserName == request.UserName || u.Email == request.UserName);
 
             if (user == null)
             {
                 return BadRequest("User not found.");
             }
 
-            if (!VerifyPasswordHash(request.Password, user.PasswordHash, user.PasswordSalt))
+            if (!PasswordUtility.VerifyPassword(request.Password, user.Password))
             {
                 return BadRequest("Incorrect username or password.");
             }
 
+          
+
             return Ok($"Welcome Back, {user.Email}!");
         }
 
-        private bool VerifyPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt)
-
-        {
-            using (var hmac = new HMACSHA512(passwordSalt))
-
-            {
-                var computedHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
-
-                return computedHash.SequenceEqual(passwordHash);
-            }
-
-        }
 
 
         [HttpPost("reset-password")]
-
         public async Task<IActionResult> ResetPassword(ResetPassword request)
-
         {
-            //var user = await _context.Users.FirstOrDefaultAsync(u => u.PasswordResetToken == request.Token);
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == request.Email);
+            var user = await _context.USERDETAILS.FirstOrDefaultAsync(u => u.Email == request.Email);
 
-            if (user == null)// || user.ResetTokenExpires < DateTime.Now)
-
+            if (user == null)
             {
-                return BadRequest("Invalid Token");
+                return BadRequest("Invalid Email");
             }
 
-            CreatePasswordHash(request.Password, out byte[] passwordHash, out byte[] passwordSalt);
+            
+            var encryptedPassword = PasswordUtility.HashPassword(request.Password);
 
-            user.PasswordHash = passwordHash;
-
-            user.PasswordSalt = passwordSalt;
-
-            user.PasswordResetToken = null;
-
-            user.ResetTokenExpires = null;
+            user.Password = encryptedPassword;
 
             await _context.SaveChangesAsync();
 
@@ -82,41 +95,7 @@ namespace API_TimeTracker.Controllers
         }
 
 
-        private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
 
-        {
-            using (var hmac = new HMACSHA512())
-
-            {
-                passwordSalt = hmac.Key;
-
-                passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
-            }
-
-        }
-
-        [HttpPost("forget-password")]
-
-        public async Task<IActionResult> ForgetPassword(string email)
-
-        {
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == email);
-
-            if (user == null)
-
-            {
-                return BadRequest("User not found");
-            }
-            //user.PasswordResetToken = CreateRandomToken();
-            //user.ResetTokenExpires = DateTime.Now.AddDays(1);
-            await _context.SaveChangesAsync();
-            return Ok("You may now reset your password.");
-        }
-
-        private string CreateRandomToken()
-        {
-            return Convert.ToHexString(RandomNumberGenerator.GetBytes(64));
-        }
 
 
     }

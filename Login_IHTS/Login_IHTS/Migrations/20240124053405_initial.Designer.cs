@@ -4,6 +4,7 @@ using API_TimeTracker.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API_TimeTracker.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20240124053405_initial")]
+    partial class initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -69,10 +72,6 @@ namespace API_TimeTracker.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TaskId"));
 
-                    b.Property<TimeOnly>("EndTime")
-                        .HasColumnType("time")
-                        .HasColumnName("ENDTIME");
-
                     b.Property<int>("LocationId")
                         .HasColumnType("int")
                         .HasColumnName("LOCATIONID");
@@ -81,18 +80,18 @@ namespace API_TimeTracker.Migrations
                         .HasColumnType("int")
                         .HasColumnName("PROJECTNAMEID");
 
-                    b.Property<TimeOnly>("StartTime")
-                        .HasColumnType("time")
-                        .HasColumnName("STARTTIME");
-
-                    b.Property<DateOnly>("TaskDate")
-                        .HasColumnType("date")
+                    b.Property<DateTime>("TaskDate")
+                        .HasColumnType("datetime2")
                         .HasColumnName("CREATIONDATE");
 
                     b.Property<string>("TaskDescription")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("TASKDESCRIPTION");
+
+                    b.Property<int>("TimePeriodId")
+                        .HasColumnType("int")
+                        .HasColumnName("TIMEPERIODID");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int")
@@ -105,7 +104,37 @@ namespace API_TimeTracker.Migrations
 
                     b.HasKey("TaskId");
 
+                    b.HasIndex("LocationId");
+
+                    b.HasIndex("ProjectId");
+
+                    b.HasIndex("TimePeriodId");
+
+                    b.HasIndex("UserId");
+
                     b.ToTable("TASKDETAILS");
+                });
+
+            modelBuilder.Entity("API_TimeTracker.Models.TimePeriodModel", b =>
+                {
+                    b.Property<int>("TimePeriodId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasColumnName("TIMESLOTID");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("TimePeriodId"));
+
+                    b.Property<TimeSpan>("EndTime")
+                        .HasColumnType("time")
+                        .HasColumnName("ENDTIME");
+
+                    b.Property<TimeSpan>("StartTime")
+                        .HasColumnType("time")
+                        .HasColumnName("STARTTIME");
+
+                    b.HasKey("TimePeriodId");
+
+                    b.ToTable("TIMESLOTS");
                 });
 
             modelBuilder.Entity("API_TimeTracker.Models.User", b =>
@@ -132,13 +161,64 @@ namespace API_TimeTracker.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("USERNAME");
 
-                    b.Property<byte>("permission")
-                        .HasColumnType("tinyint")
-                        .HasColumnName("PERMISSION");
-
                     b.HasKey("UserId");
 
                     b.ToTable("USERDETAILS");
+                });
+
+            modelBuilder.Entity("API_TimeTracker.Models.TaskModel", b =>
+                {
+                    b.HasOne("API_TimeTracker.Models.LocationModel", "Location")
+                        .WithMany("LocationTasks")
+                        .HasForeignKey("LocationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("API_TimeTracker.Models.ProjectModel", "Project")
+                        .WithMany("ProjectTasks")
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("API_TimeTracker.Models.TimePeriodModel", "TimePeriod")
+                        .WithMany("TimePeriodTasks")
+                        .HasForeignKey("TimePeriodId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("API_TimeTracker.Models.User", "User")
+                        .WithMany("UserTasks")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Location");
+
+                    b.Navigation("Project");
+
+                    b.Navigation("TimePeriod");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("API_TimeTracker.Models.LocationModel", b =>
+                {
+                    b.Navigation("LocationTasks");
+                });
+
+            modelBuilder.Entity("API_TimeTracker.Models.ProjectModel", b =>
+                {
+                    b.Navigation("ProjectTasks");
+                });
+
+            modelBuilder.Entity("API_TimeTracker.Models.TimePeriodModel", b =>
+                {
+                    b.Navigation("TimePeriodTasks");
+                });
+
+            modelBuilder.Entity("API_TimeTracker.Models.User", b =>
+                {
+                    b.Navigation("UserTasks");
                 });
 #pragma warning restore 612, 618
         }

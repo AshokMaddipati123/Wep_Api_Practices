@@ -4,6 +4,7 @@ using API_TimeTracker.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API_TimeTracker.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20240125073924_updatetable")]
+    partial class updatetable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -105,6 +108,8 @@ namespace API_TimeTracker.Migrations
 
                     b.HasKey("TaskId");
 
+                    b.HasIndex("UserId");
+
                     b.ToTable("TASKDETAILS");
                 });
 
@@ -132,13 +137,23 @@ namespace API_TimeTracker.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("USERNAME");
 
-                    b.Property<byte>("permission")
-                        .HasColumnType("tinyint")
-                        .HasColumnName("PERMISSION");
-
                     b.HasKey("UserId");
 
                     b.ToTable("USERDETAILS");
+                });
+
+            modelBuilder.Entity("API_TimeTracker.Models.TaskModel", b =>
+                {
+                    b.HasOne("API_TimeTracker.Models.User", null)
+                        .WithMany("UserTasks")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("API_TimeTracker.Models.User", b =>
+                {
+                    b.Navigation("UserTasks");
                 });
 #pragma warning restore 612, 618
         }
