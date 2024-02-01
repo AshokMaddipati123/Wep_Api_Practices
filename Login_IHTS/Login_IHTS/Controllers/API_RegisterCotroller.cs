@@ -15,6 +15,7 @@ namespace API_TimeTracker.Controllers
         {
             _context = context;
         }
+
         [HttpPost("Register")]
         public async Task<IActionResult> Register(UserRegisterRequest request)
         {

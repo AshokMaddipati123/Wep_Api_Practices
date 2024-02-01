@@ -66,21 +66,6 @@ namespace API_TimeTracker.Controllers
         {
             try
             {
-            
-                //if (!string.IsNullOrEmpty(model.UserName))
-                //{
-                    
-                //    var user = _context.USERDETAILS.FirstOrDefault(u => u.UserName == model.UserName);
-                //    if (user == null)
-                //    {
-                //        return BadRequest("User not found.");
-                //    }
-
-                    
-                //    model.UserId = user.UserId;
-                //}
-
-               
                 _context.TASKDETAILS.Add(model);
                 _context.SaveChanges();
 
@@ -92,30 +77,6 @@ namespace API_TimeTracker.Controllers
             }
         }
 
-
-
-
-        //[HttpGet("GetTasks")]
-        //public IActionResult GetTasks(string selectUser, DateTime? selectDate)
-        //{
-        //    try
-        //    {
-        //        var tasksQuery = _context.TASKDETAILS.Where(t => t.UserName == selectUser);
-
-        //        if (selectDate.HasValue)
-        //        {
-        //            tasksQuery = tasksQuery.Where(t => t.TaskDate.date == selectDate.Value.Date);
-        //        }
-
-        //        var tasks = tasksQuery.ToList();
-
-        //        return Ok(tasks);
-        //    }
-        //    catch (Exception)
-        //    {
-        //        return BadRequest("Error fetching tasks");
-        //    }
-        //}
 
 
 
@@ -134,31 +95,7 @@ namespace API_TimeTracker.Controllers
         }
 
 
-        //[HttpGet("GetAllTasks")]
-        //public IActionResult GetAllTasks()
-        //{
-        //    try
-        //    {
-        //        // Your existing logic to get tasks
-
-        //        var tasksWithUserDetails = allTasks
-        //            .Select(t => new TaskModel
-        //            {
-        //                TaskId = t.TaskId,
-        //                // Other properties...
-        //                UserName = _context.USERDETAILS.FirstOrDefault(u => u.UserId == t.UserId)?.UserName,
-        //                // Other user details...
-        //            })
-        //            .ToList();
-
-        //        return Ok(tasksWithUserDetails);
-        //    }
-        //    catch (Exception)
-        //    {
-        //        return BadRequest("Error fetching all tasks");
-        //    }
-        //}
-
+       
 
         [HttpGet("GetUserPermission")]
         public IActionResult GetUserPermission(string userName)

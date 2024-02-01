@@ -35,8 +35,7 @@ namespace API_TimeTracker.Models
         [Column("CREATIONDATE")]
         public DateOnly CREATIONDATE { get; set; }
 
-        //[NotMapped]
-        //public string UserName { get; set; }
+       
 
 
 

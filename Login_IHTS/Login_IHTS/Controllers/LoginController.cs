@@ -24,32 +24,7 @@ namespace API_TimeTracker.Controllers
         {
            _context = context;
         }
-        //[HttpPost("login")]
-        //public async Task<IActionResult> Login(UserLoginRequest request)
-        //{
-        //    var user = await _context.USERDETAILS.FirstOrDefaultAsync(u => u.UserName == request.UserName || u.Email == request.UserName);
-
-        //    if (user == null)
-        //    {
-        //        return BadRequest("User not found.");
-        //    }
-
-
-        //    if (!PasswordUtility.VerifyPassword(request.Password, user.Password))
-        //    {
-        //        return BadRequest("Incorrect username or password.");
-        //    }
-
-
-
-        //    return Ok($"Welcome Back, {user.Email}!");
-        //}
-
-
-        // ... existing code
-
-
-
+       
 
 
         [HttpPost("login")]
