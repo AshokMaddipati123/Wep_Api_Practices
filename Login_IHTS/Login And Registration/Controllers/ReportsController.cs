@@ -24,6 +24,8 @@ namespace MVC_TimeTracker.Controllers
             _client.BaseAddress = baseaddres;
         }
 
+
+
         [HttpGet]
         public async Task<IActionResult> Reports()
         {
@@ -48,8 +50,6 @@ namespace MVC_TimeTracker.Controllers
 
             return View();
         }
-
-
 
 
 
@@ -163,9 +163,6 @@ namespace MVC_TimeTracker.Controllers
         }
 
 
-
-
-
         [Route("Reports/DownloadPdf")]
         [HttpPost("DownloadPdf")]
         public async Task<IActionResult> DownloadPdfAsync(string selectUser, DateOnly? selectDate)
@@ -210,7 +207,7 @@ namespace MVC_TimeTracker.Controllers
 
                 pdfPage.Paragraphs.Add(table);
                 var headerRow = table.Rows.Add();
-               // AddCell(headerRow, "Task ID");
+               
                 AddCell(headerRow, "UserName");
                 AddCell(headerRow, "Project Name");
                 AddCell(headerRow, "Location");
@@ -224,7 +221,7 @@ namespace MVC_TimeTracker.Controllers
                 foreach (var task in allTasks)
                 {
                     var dataRow = table.Rows.Add();
-                   // AddCell(dataRow, task.TaskId.ToString());
+                
 
                     var userNameResult = await _client.GetAsync(_client.BaseAddress + $"/Task/GetUserNameById?userid={task.UserId}");
                     if (userNameResult.IsSuccessStatusCode)
@@ -267,7 +264,7 @@ namespace MVC_TimeTracker.Controllers
                 pdfDocument.Save(stream);
 
                 stream.Position = 0;
-                // Return the PDF with the username as the file name
+            
                 return new FileContentResult(stream.ToArray(), "application/pdf")
                 {
                     FileDownloadName = $"{selectUser}.pdf"

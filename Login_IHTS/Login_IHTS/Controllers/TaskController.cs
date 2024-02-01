@@ -78,8 +78,6 @@ namespace API_TimeTracker.Controllers
         }
 
 
-
-
         [HttpGet("GetAllTasks")]
         public IActionResult GetAllTasks()
         {
@@ -94,8 +92,6 @@ namespace API_TimeTracker.Controllers
             }
         }
 
-
-       
 
         [HttpGet("GetUserPermission")]
         public IActionResult GetUserPermission(string userName)
@@ -118,8 +114,6 @@ namespace API_TimeTracker.Controllers
                 return BadRequest("Error retrieving user permission");
             }
         }
-
-
 
 
         [HttpGet("GetUserId")]
@@ -169,8 +163,6 @@ namespace API_TimeTracker.Controllers
         }
 
 
-
-
         [HttpGet("GetProjectNameById")]
         public IActionResult GetProjectNameById(int projectid)
         {
@@ -181,13 +173,6 @@ namespace API_TimeTracker.Controllers
             }
             return Ok(project.ProjectName);
         }
-
-
-
-
-
-
-
 
 
         [HttpGet("GetTasksByUserId")]
@@ -209,3 +194,4 @@ namespace API_TimeTracker.Controllers
 
     }
 }
+

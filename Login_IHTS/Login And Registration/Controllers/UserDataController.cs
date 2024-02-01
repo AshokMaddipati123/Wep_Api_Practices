@@ -23,10 +23,7 @@ namespace MVC_TimeTracker.Controllers
             _client.BaseAddress = baseaddres;
 
         }
-
-
-       
-
+    
         [HttpGet]
         public async Task<IActionResult> UserData()
         {
@@ -65,8 +62,6 @@ namespace MVC_TimeTracker.Controllers
                 return View("Error");
             }
         }
-
-
 
 
         [Route("Task/SaveTask")]
@@ -122,22 +117,11 @@ namespace MVC_TimeTracker.Controllers
         }
 
 
-
-
         [HttpGet]
         public IActionResult ViewReports()
         {
             return View();
         }
-
-
-
-
-
-
-
-
-
 
 
     }
