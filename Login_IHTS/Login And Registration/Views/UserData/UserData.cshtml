@@ -69,14 +69,7 @@
                     <label for="CREATIONDATE" style="margin-bottom: 5px;">Date:</label>
                     <input type="date" name="CREATIONDATE" class="form-control" required />
                 </div>
-                <div class="col-4" style="margin-bottom: 15px;">
-                    <label for="UserStoryBugNumber" style="margin-bottom: 5px;">User Story/Bug Number:</label>
-                    <input type="text" name="UserStoryBugNumber" class="form-control" required />
-                </div>
-                <div class="col-8" style="margin-bottom: 15px;">
-                    <label for="TaskDescription" style="margin-bottom: 5px;">Task Description:</label>
-                    <textarea name="TaskDescription" class="form-control" required></textarea>
-                </div>
+
                 <div class="col-6" style="margin-bottom: 15px;">
                     <label for="StartTime" style="margin-bottom: 5px;">Start Time</label>
                     <input asp-for="StartTime" type="time" class="form-control" required />
@@ -87,6 +80,16 @@
                     <input asp-for="EndTime" type="time" class="form-control" required />
                     <span asp-validation-for="EndTime" class="text-danger"></span>
                 </div>
+
+                <div class="col-2" style="margin-bottom: 15px;">
+                    <label for="UserStoryBugNumber" style="margin-bottom: 5px;">User Story/Bug Number:</label>
+                    <input type="text" name="UserStoryBugNumber" class="form-control" required />
+                </div>
+                <div class="col-10" style="margin-bottom: 15px;">
+                    <label for="TaskDescription" style="margin-bottom: 5px;">Task Description:</label>
+                    <textarea name="TaskDescription" class="form-control" required></textarea>
+                </div>
+               
             </div>
             <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px;">
                 <button type="submit" class="btn btn-primary" style="padding: 10px 20px;">Submit</button>

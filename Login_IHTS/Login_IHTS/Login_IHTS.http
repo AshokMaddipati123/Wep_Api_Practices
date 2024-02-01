@@ -1,6 +1,0 @@
-@Login_IHTS_HostAddress = http://localhost:5012
-
-GET {{Login_IHTS_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

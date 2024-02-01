@@ -7,12 +7,29 @@
 }
 
 <h2>Reports</h2>
+<style>
+    .button-container {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .green-button {
+        background-color: green;
+        color: white;
+    }
+
+    .red-button {
+        background-color: red;
+        color: white;
+    }
+</style>
+
 
 
 
 <form id="downloadForm" method="post" action="/Reports/DownloadExcel" style="padding: 20px; background-color: #f7f7f7; border: 1px solid #e1e1e1; border-radius: 5px;">
     <div class="row">
-        <div class="col-5" style="margin-bottom: 15px;">
+        <div class="col-6" style="margin-bottom: 15px;">
             <label for="selectUser" style="margin-bottom: 5px;">Select User:</label>
             <select id="selectUser" name="selectUser" class="form-control">
                 <option value="">-- Select User --</option>
@@ -22,15 +39,15 @@
                 }
             </select>
         </div>
-        <div class="col-5" style="margin-bottom: 15px;">
+        <div class="col-6" style="margin-bottom: 15px;">
             <label for="selectDate" style="margin-bottom: 5px;">Select Date:</label>
             <input type="date" id="selectDate" name="selectDate" class="form-control" />
         </div>
     </div>
-    <div style="margin-bottom: 15px;">
-        
-        <button type="submit" class="btn btn-primary" style="padding: 10px 20px;">Download Excel</button>
-        <button type="submit" class="btn btn-primary" onclick="document.getElementById('downloadForm').action='/Reports/DownloadPDF'" style="padding: 10px 20px; margin-left: 10px;">Download PDF</button>
+ 
+    <div class="button-container">
+        <button type="submit" class="btn btn-primary green-button" style="padding: 10px 20px; margin-right: 10px;">Download Excel</button>
+        <button type="submit" class="btn btn-primary red-button" onclick="document.getElementById('downloadForm').action='/Reports/DownloadPDF'" style="padding: 10px 20px;">Download PDF</button>
     </div>
 </form>
 
