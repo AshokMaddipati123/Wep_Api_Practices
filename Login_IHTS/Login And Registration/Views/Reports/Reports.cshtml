@@ -1,0 +1,46 @@
+﻿
+
+@using MVC_TimeTracker;
+
+@{
+    ViewData["Title"] = "Reports";
+}
+
+<h2>Reports</h2>
+
+
+
+<form id="downloadForm" method="post" action="/Reports/DownloadExcel" style="padding: 20px; background-color: #f7f7f7; border: 1px solid #e1e1e1; border-radius: 5px;">
+    <div class="row">
+        <div class="col-5" style="margin-bottom: 15px;">
+            <label for="selectUser" style="margin-bottom: 5px;">Select User:</label>
+            <select id="selectUser" name="selectUser" class="form-control">
+                <option value="">-- Select User --</option>
+                @foreach (var user in ViewBag.Usernames)
+                {
+                    <option value="@user">@user</option>
+                }
+            </select>
+        </div>
+        <div class="col-5" style="margin-bottom: 15px;">
+            <label for="selectDate" style="margin-bottom: 5px;">Select Date:</label>
+            <input type="date" id="selectDate" name="selectDate" class="form-control" />
+        </div>
+    </div>
+    <div style="margin-bottom: 15px;">
+        
+        <button type="submit" class="btn btn-primary" style="padding: 10px 20px;">Download Excel</button>
+        <button type="submit" class="btn btn-primary" onclick="document.getElementById('downloadForm').action='/Reports/DownloadPDF'" style="padding: 10px 20px; margin-left: 10px;">Download PDF</button>
+    </div>
+</form>
+
+
+
+
+
+
+
+
+
+
+

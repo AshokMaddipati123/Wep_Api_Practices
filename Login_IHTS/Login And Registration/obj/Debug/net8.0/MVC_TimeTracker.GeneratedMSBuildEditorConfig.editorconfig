@@ -26,14 +26,6 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\Wep_Api_Practices\Login_IHTS\Login And Registration
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/Wep_Api_Practices/Login_IHTS/Login And Registration/Views/Home/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[D:/Wep_Api_Practices/Login_IHTS/Login And Registration/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [D:/Wep_Api_Practices/Login_IHTS/Login And Registration/Views/Logins/Logins.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9naW5zXExvZ2lucy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -44,6 +36,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/Wep_Api_Practices/Login_IHTS/Login And Registration/Views/Register/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVnaXN0ZXJcUmVnaXN0ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/Wep_Api_Practices/Login_IHTS/Login And Registration/Views/Reports/Reports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0c1xSZXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/Wep_Api_Practices/Login_IHTS/Login And Registration/Views/Shared/Error.cshtml]

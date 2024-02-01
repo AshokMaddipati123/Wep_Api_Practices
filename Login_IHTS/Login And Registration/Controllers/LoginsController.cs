@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using API_TimeTracker.Models;
+using Microsoft.AspNetCore.Mvc;
 using MVC_TimeTracker.Models;
 using System.Net;
 using System.Text;
@@ -36,11 +37,18 @@ namespace MVC_TimeTracker.Controllers
                 string data = JsonSerializer.Serialize(model);
                 StringContent content = new StringContent(data, Encoding.UTF8, "application/json");
                 HttpResponseMessage response = _client.PostAsync(_client.BaseAddress + "/Login/login", content).Result;
+       
 
                 if (response.IsSuccessStatusCode)
                 {
-                    TempData["SuccesssMessage"] = "Login Successful";
+
+                    var Data = await _client.GetAsync(_client.BaseAddress + $"/Task/GetUserPermission?userName={model.UserName}");
+                    byte Permission = await Data.Content.ReadAsAsync<byte>();
+                    TempData["Permision"] = Convert.ToInt32(Permission);
+                    TempData["UserName"] = model.UserName;
+
                     return RedirectToAction("UserData","UserData");
+                   
                 }
                 else if (response.StatusCode == HttpStatusCode.BadRequest)
                 {

@@ -48,6 +48,18 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Aspose.PDF": {
+              "target": "Package",
+              "version": "[24.1.0, )"
+            },
+            "CsvHelper": {
+              "target": "Package",
+              "version": "[30.1.0, )"
+            },
+            "EPPlus": {
+              "target": "Package",
+              "version": "[7.0.8, )"
+            },
             "Microsoft.AspNetCore.Components.QuickGrid.EntityFrameworkAdapter": {
               "target": "Package",
               "version": "[8.0.1, )"
